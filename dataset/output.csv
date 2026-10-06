@@ -1,111 +1,111 @@
 message_id,action,message_type,reason,confidence,evidence_message_ids
-msg_023,,,,,
-msg_091,,,,,
-msg_090,,,,,
-msg_048,,,,,
-msg_040,,,,,
-msg_075,,,,,
-msg_005,,,,,
-msg_104,,,,,
-msg_069,,,,,
-msg_107,,,,,
-msg_070,,,,,
-msg_003,,,,,
-msg_099,,,,,
-msg_008,,,,,
-msg_092,,,,,
-msg_060,,,,,
-msg_004,,,,,
-msg_030,,,,,
-msg_045,,,,,
-msg_052,,,,,
-msg_009,,,,,
-msg_071,,,,,
-msg_016,,,,,
-msg_065,,,,,
-msg_038,,,,,
-msg_086,,,,,
-msg_014,,,,,
-msg_094,,,,,
-msg_029,,,,,
-msg_105,,,,,
-msg_002,,,,,
-msg_010,,,,,
-msg_078,,,,,
-msg_013,,,,,
-msg_018,,,,,
-msg_044,,,,,
-msg_032,,,,,
-msg_106,,,,,
-msg_006,,,,,
-msg_109,,,,,
-msg_108,,,,,
-msg_019,,,,,
-msg_088,,,,,
-msg_056,,,,,
-msg_027,,,,,
-msg_050,,,,,
-msg_083,,,,,
-msg_063,,,,,
-msg_033,,,,,
-msg_061,,,,,
-msg_020,,,,,
-msg_017,,,,,
-msg_058,,,,,
-msg_026,,,,,
-msg_047,,,,,
-msg_046,,,,,
-msg_042,,,,,
-msg_079,,,,,
-msg_098,,,,,
-msg_037,,,,,
-msg_007,,,,,
-msg_085,,,,,
-msg_001,,,,,
-msg_021,,,,,
-msg_028,,,,,
-msg_012,,,,,
-msg_064,,,,,
-msg_103,,,,,
-msg_031,,,,,
-msg_057,,,,,
-msg_087,,,,,
-msg_067,,,,,
-msg_039,,,,,
-msg_082,,,,,
-msg_066,,,,,
-msg_049,,,,,
-msg_015,,,,,
-msg_051,,,,,
-msg_097,,,,,
-msg_089,,,,,
-msg_053,,,,,
-msg_059,,,,,
-msg_024,,,,,
-msg_072,,,,,
-msg_036,,,,,
-msg_076,,,,,
-msg_055,,,,,
-msg_102,,,,,
-msg_080,,,,,
-msg_093,,,,,
-msg_034,,,,,
-msg_035,,,,,
-msg_101,,,,,
-msg_041,,,,,
-msg_011,,,,,
-msg_110,,,,,
-msg_095,,,,,
-msg_074,,,,,
-msg_073,,,,,
-msg_054,,,,,
-msg_068,,,,,
-msg_100,,,,,
-msg_062,,,,,
-msg_096,,,,,
-msg_043,,,,,
-msg_077,,,,,
-msg_081,,,,,
-msg_025,,,,,
-msg_084,,,,,
-msg_022,,,,,
+msg_023,notify,business_update,Active delivery status.,0.90,message_0102;message_0243
+msg_091,mute,scam,"Message requests sensitive OTP, wallet PIN, or login credentials. This is the first message from the sender and it asks for sensitive verification or payment. Uses artificial time pressure and account-lock threats",0.85,message_0238;message_0381
+msg_090,digest,personal,Casual conversation with low risk and trust.,0.75,none
+msg_048,notify,business_update,Admin time-sensitive update with potential consequences.,0.85,message_0237;message_0151
+msg_040,digest,forward,Forwarded message with low risk and moderate importance.,0.75,message_0136;message_0135
+msg_075,notify,business_update,Active delivery status.,0.91,message_0206;message_0205
+msg_005,notify,personal,Personal conversation between users.,0.95,message_0231;message_0049
+msg_104,notify,personal,Personal message with moderate importance and urgency.,0.75,message_0232;message_0050
+msg_069,digest,greeting,Casual greeting with low risk and urgency.,0.75,message_0080;message_0177
+msg_107,mute,scam,"Message contains adversarial instructions targeting the notification router. Message requests sensitive OTP, wallet PIN, or login credentials. This is the first message from the sender and it asks for sensitive verification or payment",1.00,message_0213;message_0196
+msg_070,digest,scam,Phishing attempt with moderate risk.,0.75,message_0213;message_0196
+msg_003,notify,business_update,Active delivery status.,0.91,message_0400;message_0031
+msg_099,digest,personal,Casual chat with moderate personalization.,0.95,message_0118;message_0055
+msg_008,notify,business_update,Active delivery status.,0.91,message_0296;message_0071
+msg_092,notify,business_update,Active delivery status.,0.80,none
+msg_060,notify,event,Time-sensitive deadline reminder.,0.91,message_0175;message_0404
+msg_004,notify,business_update,Active delivery status.,0.91,message_0064;message_0245
+msg_030,digest,promotion,Non-urgent promotional message from a marketplace group.,0.75,message_0232;message_0050
+msg_045,notify,business_update,Delivery confirmation request from a trusted source.,0.85,message_0146;message_0145
+msg_052,notify,business_update,Transactional message from unverified business.,0.00,message_0159;message_0207
+msg_009,digest,personal,Casual group chat with low risk and moderate importance.,0.75,message_0073;message_0074
+msg_071,digest,personal,Casual group chat with uncertain plans.,0.75,message_0197;message_0198
+msg_016,mute,scam,"Message requests sensitive OTP, wallet PIN, or login credentials. Uses artificial time pressure and account-lock threats. Contains suspicious or unverified domain link (account-login.in)",0.87,message_0202;message_0184
+msg_065,notify,promotion,Promotional offer with limited time.,0.90,message_0185;message_0186
+msg_038,digest,forward,Forwarded post with moderate risk and importance.,0.75,message_0131;message_0132
+msg_086,notify,business_update,Promotional deal expiring tonight.,0.65,message_0222
+msg_014,mute,promotion,The user has opted out of or repeatedly dismissed similar marketing messages.,0.95,message_0258;message_0083
+msg_094,notify,promotion,Marketing offer from verified business.,0.80,none
+msg_029,digest,promotion,Non-urgent promotional message with low risk.,0.95,message_0231;message_0049
+msg_105,digest,forward,Forwarded message with low trust and personalization.,0.75,message_0373;message_0233
+msg_002,notify,personal,Important coworker discussion.,0.95,message_0003;message_0060
+msg_010,notify,business_update,Active delivery status.,0.95,message_0011;message_0076
+msg_078,digest,business_update,Admin time-sensitive update with pending approval.,0.75,message_0211;message_0212
+msg_013,digest,promotion,Promotional message with limited-time offer.,0.85,message_0081;message_0082
+msg_018,digest,promotion,Unverified promotional message with low risk.,0.85,message_0092;message_0091
+msg_044,mute,scam,"Message requests sensitive OTP, wallet PIN, or login credentials. Uses artificial time pressure and account-lock threats",0.85,message_0144;message_0036
+msg_032,digest,personal,"Casual group discussion, no immediate action required.",0.95,message_0120;message_0374
+msg_106,notify,event,Important schedule update with moderate personalization.,0.85,message_0377;message_0376
+msg_006,notify,event,Admin time-sensitive update with clear instructions.,0.91,message_0029;message_0129
+msg_109,mute,scam,Message contains adversarial instructions targeting the notification router,0.85,message_0237;message_0151
+msg_108,mute,scam,Message contains adversarial instructions targeting the notification router. Uses artificial time pressure and account-lock threats. Contains suspicious or unverified domain link (chase-secure-alert.com). Sender domain mismatch: claimed 'chase.com' but used 'chase-secure-alert.com',0.85,message_0094;message_0236
+msg_019,digest,business_update,Security update pending on banking profile.,0.50,message_0094;message_0236
+msg_088,digest,business_update,Active delivery status.,0.91,message_0232;message_0050
+msg_056,notify,business_update,Active delivery status.,0.91,message_0359;message_0168
+msg_027,digest,promotion,Marketing message from unverified business with moderate risk.,0.65,message_0272;message_0033
+msg_050,notify,business_update,Transactional message from verified business.,0.90,message_0155;message_0279
+msg_083,notify,event,Admin time-sensitive update.,0.90,message_0219
+msg_063,notify,business_update,Admin time-sensitive update with payment request.,0.75,message_0181;message_0182
+msg_033,digest,greeting,Casual greeting with no urgency.,0.95,message_0393;message_0372
+msg_061,digest,greeting,Casual greeting with low risk.,0.75,message_0080;message_0177
+msg_020,notify,unknown,"Unknown message type, but high importance and urgency.",0.75,message_0095;message_0096
+msg_017,digest,business_update,Active delivery status.,0.75,message_0090;message_0089
+msg_058,digest,forward,Forwarded message with low importance and urgency.,0.75,message_0123;message_0241
+msg_026,mute,scam,Contains suspicious or unverified domain link (amazonpay-delivery.in). Sender domain mismatch: claimed 'amazon.in' but used 'amazonpay-delivery.in',0.85,message_0107;message_0108
+msg_047,notify,event,Scheduled maintenance update.,0.91,message_0029;message_0129
+msg_046,digest,scam,Phishing OTP request with moderate risk and urgency.,0.75,message_0148;message_0147
+msg_042,notify,event,Time-sensitive update from society admin.,0.95,message_0057;message_0058
+msg_079,digest,scam,Suspicious request with risk and low trust.,0.75,message_0213;message_0196
+msg_098,notify,personal,Urgent personal discussion.,0.95,message_0359;message_0168
+msg_037,notify,urgent,Admin time-sensitive update.,0.95,message_0029;message_0129
+msg_007,digest,event,Group event update with no urgency.,0.75,message_0070;message_0069
+msg_085,digest,business_update,Promotional voice note from unverified pharmacy.,0.00,message_0221
+msg_001,notify,urgent,Admin time-sensitive update with risk of water supply disruption.,0.95,message_0057;message_0058
+msg_021,notify,payment,Payment due notice with clear instructions.,0.91,message_0029;message_0129
+msg_028,mute,promotion,The user has opted out of or repeatedly dismissed similar marketing messages.,0.55,message_0034;message_0111
+msg_012,digest,forward,Forwarded post with low importance and urgency.,0.85,message_0080;message_0177
+msg_064,notify,business_update,Refund update with time-sensitive action required.,0.85,message_0202;message_0184
+msg_103,notify,personal,Personal message with moderate importance and urgency.,0.95,message_0231;message_0049
+msg_031,notify,event,Important meeting update with action items.,0.91,message_0118;message_0055
+msg_057,notify,personal,Important coworker inquiry.,0.95,message_0003;message_0060
+msg_087,digest,business_update,Active delivery status.,0.75,message_0223;message_0164
+msg_067,notify,business_update,Admin time-sensitive update about payment.,0.91,message_0029;message_0129
+msg_039,notify,event,School field-trip deadline reminder.,0.91,message_0209;message_0133
+msg_082,notify,personal,Casual voice note about weekend dinner plans.,0.90,message_0218;message_0380
+msg_066,mute,promotion,The user has opted out of or repeatedly dismissed similar marketing messages.,0.95,message_0187;message_0188
+msg_049,notify,business_update,Active delivery status.,0.91,message_0153;message_0291
+msg_015,digest,unknown,"Suspicious message with OTP request, but not enough evidence to classify as scam.",0.75,message_0199;message_0200
+msg_051,mute,promotion,The user has opted out of or repeatedly dismissed similar marketing messages.,0.95,message_0157;message_0257
+msg_097,digest,personal,"Casual conversation, no urgent action required.",0.95,message_0359;message_0168
+msg_089,digest,personal,Casual chat with low risk and urgency.,0.75,none
+msg_053,digest,forward,Forwarded post with no immediate action required.,0.75,message_0253;message_0161
+msg_059,notify,business_update,Time-sensitive benefits claim reminder.,0.75,message_0213;message_0196
+msg_024,mute,promotion,The user has opted out of or repeatedly dismissed similar marketing messages.,0.95,message_0157;message_0257
+msg_072,mute,scam,"Message requests sensitive OTP, wallet PIN, or login credentials. Contains suspicious or unverified domain link (account-help.in)",0.85,message_0199;message_0200
+msg_036,digest,business_update,Unverified business message with moderate risk.,0.00,message_0127;message_0128
+msg_076,digest,business_update,Refund update from unverified sender.,0.60,message_0159;message_0207
+msg_055,notify,urgent,Urgent request from group admin.,0.95,message_0166;message_0387
+msg_102,notify,personal,Important personal update with moderate urgency.,0.95,message_0003;message_0060
+msg_080,notify,urgent,Admin time-sensitive update.,0.91,message_0029;message_0129
+msg_093,notify,business_update,Active delivery status from verified business.,0.80,none
+msg_034,digest,greeting,Casual greeting with no urgency.,0.95,message_0123;message_0241
+msg_035,notify,business_update,Active delivery status.,0.91,message_0125;message_0126
+msg_101,digest,personal,Casual conversation with low priority.,0.75,message_0268;message_0370
+msg_041,digest,business_update,General update from verified business with moderate trust.,0.40,message_0138;message_0137
+msg_011,digest,forward,Forwarded message with low importance and no risk.,0.95,message_0123;message_0241
+msg_110,mute,scam,"Message contains adversarial instructions targeting the notification router. Message requests sensitive OTP, wallet PIN, or login credentials. This is the first message from the sender and it asks for sensitive verification or payment",0.85,message_0238;message_0381
+msg_095,mute,scam,"Message contains adversarial instructions targeting the notification router. Message requests sensitive OTP, wallet PIN, or login credentials. Contains suspicious or unverified domain link (pay-check-secure.com)",0.85,message_0202;message_0184
+msg_074,digest,promotion,Real estate promotion with token booking offer.,0.75,message_0223;message_0164
+msg_073,mute,scam,"Message requests sensitive OTP, wallet PIN, or login credentials. Uses artificial time pressure and account-lock threats",0.85,message_0202;message_0184
+msg_054,notify,business_update,Active business update with time-sensitive action.,0.75,message_0223;message_0164
+msg_068,digest,personal,Casual group discussion with no urgency.,0.85,message_0191;message_0192
+msg_100,notify,personal,Urgent request from trusted contact.,0.95,message_0118;message_0055
+msg_062,digest,event,Routine society notice with no immediate action required.,0.95,message_0029;message_0129
+msg_096,digest,personal,Casual conversation between users.,0.75,none
+msg_043,notify,event,Admin time-sensitive update about water supply.,0.75,message_0029;message_0129
+msg_077,notify,event,Important school circular with action items.,0.95,message_0209;message_0133
+msg_081,notify,event,School bus delay update in group chat.,0.80,message_0217
+msg_025,notify,business_update,Active delivery status.,0.91,message_0105;message_0106
+msg_084,mute,promotion,The user has opted out of or repeatedly dismissed similar marketing messages.,0.95,message_0220
+msg_022,notify,payment,Payment reminder with deadline and instructions.,0.85,message_0099;message_0100
