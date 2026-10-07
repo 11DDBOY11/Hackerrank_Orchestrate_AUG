@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Intelligent Notification Router | Mobile App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --primary: #10b981;
+            --primary-glow: rgba(16, 185, 129, 0.3);
+            --notify-color: #10b981;
+            --digest-color: #3b82f6;
+            --mute-color: #ef4444;
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.12) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.12) 0px, transparent 50%);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .logo i {
+            color: var(--primary);
+            font-size: 1.6rem;
+        }
+
+        .status-badge {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: 30px;
+            padding: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* Phone Frame Mockup */
+        .phone-mockup {
+            background: #020617;
+            border: 12px solid #1e293b;
+            border-radius: 48px;
+            height: 720px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 30px rgba(16, 185, 129, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .phone-notch {
+            width: 140px;
+            height: 24px;
+            background: #1e293b;
+            margin: 0 auto;
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+            z-index: 10;
+        }
+
+        .phone-header {
+            padding: 15px 20px;
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .phone-screen {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            overflow-y: auto;
+        }
+
+        .simulated-notification {
+            background: rgba(30, 41, 59, 0.9);
+            border-radius: 16px;
+            padding: 14px;
+            border-left: 4px solid var(--primary);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .simulated-notification.notify { border-left-color: var(--notify-color); }
+        .simulated-notification.digest { border-left-color: var(--digest-color); }
+        .simulated-notification.mute { border-left-color: var(--mute-color); opacity: 0.7; }
+
+        .notif-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: var(--text-sub);
+            margin-bottom: 6px;
+        }
+
+        .notif-title {
+            font-weight: 600;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .notif-body {
+            font-size: 0.82rem;
+            color: #cbd5e1;
+            line-height: 1.4;
+        }
+
+        .notif-tag {
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .notif-tag.notify { background: rgba(16, 185, 129, 0.2); color: var(--notify-color); }
+        .notif-tag.digest { background: rgba(59, 130, 246, 0.2); color: var(--digest-color); }
+        .notif-tag.mute { background: rgba(239, 68, 68, 0.2); color: var(--mute-color); }
+
+        /* Dashboard Right Panel */
+        .dashboard-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-card .val {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+
+        .stat-card .lbl {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .test-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 25px;
+        }
+
+        .test-box h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            margin-bottom: 6px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        .btn-send {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+
+        .btn-send:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>WhatsApp Intelligent Router (Mobile PWA)</span>
+        </div>
+        <div class="status-badge">
+            <div class="status-dot"></div>
+            <span>Groq AI Triage Core Active</span>
+        </div>
+    </header>
+
+    <div class="main-layout">
+        <!-- Phone Simulator Column -->
+        <div>
+            <div class="phone-mockup">
+                <div class="phone-notch"></div>
+                <div class="phone-header">
+                    <span>9:41 AM</span>
+                    <span><i class="fa-solid fa-wifi"></i> <i class="fa-solid fa-battery-full"></i></span>
+                </div>
+                <div class="phone-screen" id="phone-screen">
+                    <div class="simulated-notification notify">
+                        <div class="notif-header">
+                            <span>WhatsApp • Just Now</span>
+                            <span class="notif-tag notify">NOTIFY</span>
+                        </div>
+                        <div class="notif-title">Delivery Partner</div>
+                        <div class="notif-body">Your package is out for delivery! Share OTP 4921 with the agent.</div>
+                    </div>
+                    <div class="simulated-notification digest">
+                        <div class="notif-header">
+                            <span>WhatsApp • 10m ago</span>
+                            <span class="notif-tag digest">DIGEST</span>
+                        </div>
+                        <div class="notif-title">Family Group</div>
+                        <div class="notif-body">Aunt Jane shared 4 photos from weekend trip.</div>
+                    </div>
+                    <div class="simulated-notification mute">
+                        <div class="notif-header">
+                            <span>WhatsApp • Blocked Scam</span>
+                            <span class="notif-tag mute">MUTE</span>
+                        </div>
+                        <div class="notif-title">+1 (800) 999-012</div>
+                        <div class="notif-body">URGENT: Your bank account is locked! Click account-login.in to verify PIN.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Control Panel -->
+        <div class="dashboard-panel">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="lbl">Total Processed</div>
+                    <div class="val" id="stat-total">3</div>
+                </div>
+                <div class="stat-card">
+                    <div class="lbl">Notify (Urgent)</div>
+                    <div class="val" style="color: var(--notify-color)" id="stat-notify">1</div>
+                </div>
+                <div class="stat-card">
+                    <div class="lbl">Daily Digest</div>
+                    <div class="val" style="color: var(--digest-color)" id="stat-digest">1</div>
+                </div>
+                <div class="stat-card">
+                    <div class="lbl">Scams Blocked</div>
+                    <div class="val" style="color: var(--mute-color)" id="stat-mute">1</div>
+                </div>
+            </div>
+
+            <!-- Live Test Message Box -->
+            <div class="test-box">
+                <h3><i class="fa-solid fa-paper-plane" style="color: var(--primary)"></i> Live Push Notification Simulator</h3>
+                <form id="triage-form">
+                    <div class="form-group">
+                        <label>Sender (Name or Number)</label>
+                        <input type="text" id="sender-input" class="form-control" value="Bank Alert / Stranger" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Incoming WhatsApp Message Text</label>
+                        <textarea id="content-input" class="form-control" rows="3" required placeholder="Type any WhatsApp message to test real-time triage..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-send">Send Notification Payload</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('triage-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const sender = document.getElementById('sender-input').value;
+            const content = document.getElementById('content-input').value;
+
+            try {
+                const res = await fetch('/api/v1/triage', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        sender_id: sender,
+                        content: content
+                    })
+                });
+
+                const data = await res.json();
+                
+                // Append notification to phone simulator screen
+                const screen = document.getElementById('phone-screen');
+                const notifEl = document.createElement('div');
+                notifEl.className = `simulated-notification ${data.action}`;
+                notifEl.innerHTML = `
+                    <div class="notif-header">
+                        <span>WhatsApp • Just Now</span>
+                        <span class="notif-tag ${data.action}">${data.action.toUpperCase()}</span>
+                    </div>
+                    <div class="notif-title">${sender}</div>
+                    <div class="notif-body">${content}</div>
+                    <div style="font-size: 0.72rem; color: #94a3b8; margin-top: 6px;">Rationale: ${data.reason}</div>
+                `;
+                screen.prepend(notifEl);
+
+                // Update stats
+                fetchStats();
+            } catch (err) {
+                alert('Error sending notification: ' + err.message);
+            }
+        });
+
+        async function fetchStats() {
+            try {
+                const res = await fetch('/api/v1/stats');
+                const data = await res.json();
+                document.getElementById('stat-total').innerText = data.total_processed;
+                document.getElementById('stat-notify').innerText = data.notify_count;
+                document.getElementById('stat-digest').innerText = data.digest_count;
+                document.getElementById('stat-mute').innerText = data.mute_count;
+            } catch (e) {}
+        }
+    </script>
+</body>
+</html>
